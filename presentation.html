@@ -29,7 +29,7 @@
   .deck { position: relative; height: 100%; }
   .slide {
     position: absolute; inset: 0;
-    display: flex; flex-direction: column; justify-content: center;
+    display: flex; flex-direction: column; justify-content: safe center;
     padding: 56px max(16px, 8vw) 80px;
     opacity: 0; pointer-events: none;
     transform: translateX(30px);
@@ -93,8 +93,8 @@
   }
 
   svg.chart { width: 100%; height: auto; max-height: 52vh; }
-  .check { list-style: none; display: grid; gap: 12px; }
-  .check li { display: flex; gap: 14px; align-items: center; font-size: 21px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; cursor: pointer; user-select: none; }
+  .check { list-style: none; display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+  .check li { display: flex; gap: 14px; align-items: center; font-size: 19px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; cursor: pointer; user-select: none; }
   .check li .box { width: 22px; height: 22px; border: 2px solid var(--muted); border-radius: 6px; flex: none; display: grid; place-items: center; }
   .check li.done .box { background: var(--green); border-color: var(--green); }
   .check li.done .box::after { content: "✓"; color: #fff; font-size: 14px; font-weight: 800; }
@@ -240,6 +240,120 @@
     </div>
   </section>
 
+  <!-- S2-a. Strong point -->
+  <section class="slide">
+    <div class="kicker">Session 2 · Zone quality</div>
+    <h2>Strong point = <span class="gold">all criteria met?</span></h2>
+    <div class="grid">
+      <div class="card hl"><div class="label">Fresh zone</div><div class="value gold">Not returned</div><div class="muted">Cycle not complete — price left and hasn't come back</div></div>
+      <div class="card"><div class="label">BOS</div><div class="value">Break of structure</div><div class="muted">Indicates a better zone</div></div>
+      <div class="card"><div class="label">Sideways</div><div class="value">Base</div><div class="muted">Where I draw the rectangle</div></div>
+      <div class="card"><div class="label">Momentum</div><div class="value">Strong exit</div><div class="muted">Big, fast candles leaving the base</div></div>
+    </div>
+    <p class="note">One missing → <b>not a strong point</b>, skip it. Confirm the full criteria list with Fendy.</p>
+  </section>
+
+  <!-- S2-b. Fresh zone -->
+  <section class="slide">
+    <div class="kicker">Session 2 · Zone quality</div>
+    <div class="two">
+      <div>
+        <h2><span class="gold">Fresh</span> zone</h2>
+        <ul class="points">
+          <li>Price left the zone and <b>has not come back yet</b></li>
+          <li>The <b>cycle is not complete</b> — orders are still waiting there</li>
+          <li>Once price returns &amp; reacts, the zone is no longer fresh</li>
+        </ul>
+      </div>
+      <svg class="chart" viewBox="0 0 420 260" aria-label="Fresh demand zone">
+        <rect x="30" y="182" width="360" height="34" rx="4" fill="rgba(38,166,154,.12)" stroke="#26a69a" stroke-dasharray="5 4"/>
+        <text x="40" y="236" fill="#26a69a" font-size="13" font-weight="700">DEMAND ZONE</text>
+        <polyline points="50,205 90,198 130,120 170,140 230,70 280,95 340,40 390,60" fill="none" stroke="#26a69a" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+        <text x="260" y="150" fill="#f5c044" font-size="13" text-anchor="middle" font-weight="700">FRESH — not returned yet</text>
+        <line x1="390" y1="70" x2="390" y2="170" stroke="#8b98a5" stroke-width="2" stroke-dasharray="4 4"/>
+        <text x="380" y="125" fill="#8b98a5" font-size="20" text-anchor="end">?</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- S2-c. Momentum -->
+  <section class="slide">
+    <div class="kicker">Session 2 · Zone quality</div>
+    <h2><span class="gold">Momentum</span></h2>
+    <ul class="points">
+      <li>How <b>strongly</b> price leaves the base</li>
+      <li>Big, fast candles in one direction = <span class="green">stronger zone</span></li>
+      <li>Slow, weak move out = weaker zone</li>
+    </ul>
+    <p class="note">Rewatch the session video at <b>~9:13</b>.</p>
+  </section>
+
+  <!-- S2-d. BOS -->
+  <section class="slide">
+    <div class="kicker">Session 2 · Structure</div>
+    <div class="two">
+      <div>
+        <h2><span class="gold">BOS</span> — Break of Structure</h2>
+        <ul class="points">
+          <li>A BOS <b>indicates a better zone</b></li>
+          <li>Sell example: the <b>right price is lower than the left price</b></li>
+          <li>The zone that caused the break is the one to watch</li>
+        </ul>
+        <p class="muted" style="margin-top:14px;font-size:15px">Video at ~9:16</p>
+      </div>
+      <svg class="chart" viewBox="0 0 420 260" aria-label="Break of structure on a sell">
+        <rect x="150" y="70" width="60" height="34" rx="4" fill="rgba(239,83,80,.14)" stroke="#ef5350" stroke-dasharray="5 4"/>
+        <text x="180" y="60" fill="#ef5350" font-size="12" text-anchor="middle" font-weight="700">BETTER ZONE</text>
+        <line x1="110" y1="150" x2="320" y2="150" stroke="#f5c044" stroke-width="2" stroke-dasharray="6 4"/>
+        <text x="300" y="142" fill="#f5c044" font-size="14" font-weight="700">BOS</text>
+        <polyline points="20,40 110,150 180,85 270,215" fill="none" stroke="#ef5350" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="110" cy="150" r="6" fill="#e6edf3"/>
+        <circle cx="270" cy="215" r="6" fill="#f5c044"/>
+        <text x="100" y="178" fill="#e6edf3" font-size="12" text-anchor="middle" font-weight="700">LEFT low</text>
+        <text x="270" y="242" fill="#f5c044" font-size="12" text-anchor="middle" font-weight="700">RIGHT low (lower)</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- S2-e. Flip -->
+  <section class="slide">
+    <div class="kicker">Session 2 · Advanced</div>
+    <div class="two">
+      <div>
+        <h2><span class="gold">Flip</span></h2>
+        <ul class="points">
+          <li><b>Instead of a sell, go for a buy</b></li>
+          <li>A broken zone can switch roles: old supply acts as demand</li>
+        </ul>
+        <p class="note">"It's complicated" — learn this in more depth later.</p>
+      </div>
+      <svg class="chart" viewBox="0 0 420 260" aria-label="Flip zone">
+        <rect x="70" y="100" width="330" height="28" rx="4" fill="rgba(245,192,68,.12)" stroke="#f5c044" stroke-dasharray="5 4"/>
+        <text x="80" y="92" fill="#ef5350" font-size="12" font-weight="700">SUPPLY (sell)</text>
+        <text x="390" y="150" fill="#26a69a" font-size="12" text-anchor="end" font-weight="700">→ now DEMAND (buy)</text>
+        <polyline points="20,220 80,140 115,108 160,195 220,150 255,55 300,96 370,25" fill="none" stroke="#e6edf3" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="300" cy="96" r="7" fill="#26a69a"/>
+        <text x="300" y="80" fill="#26a69a" font-size="12" text-anchor="middle" font-weight="700">BUY</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- S2-f. Good to know -->
+  <section class="slide">
+    <div class="kicker">Session 2 · Good to know</div>
+    <h2>Just so I know it</h2>
+    <div class="two">
+      <div class="card">
+        <h3 class="gold">Change of Character (CHoCH)</h3>
+        <p class="muted">The <b>first break against the current trend</b> — an early sign the trend may be turning. BOS = trend continues, CHoCH = trend may reverse. Awareness only for now.</p>
+      </div>
+      <div class="card">
+        <h3 class="gold">M1 timeframe</h3>
+        <p class="muted">Using the <b>1 minute</b> chart is <b>my preference</b> — optional. Ask Fendy what M1 is used for (e.g. entries).</p>
+      </div>
+    </div>
+  </section>
+
   <!-- 8. Pips -->
   <section class="slide">
     <div class="kicker">05 · Pips for gold</div>
@@ -300,6 +414,9 @@
       <li><span class="box"></span><span>Timeframe set to 5 minute</span></li>
       <li><span class="box"></span><span>Base found &amp; zone marked</span></li>
       <li><span class="box"></span><span>Zone is 150 pips or smaller</span></li>
+      <li><span class="box"></span><span>Zone is fresh (price hasn't returned)</span></li>
+      <li><span class="box"></span><span>BOS confirmed + strong momentum</span></li>
+      <li><span class="box"></span><span>All criteria met = strong point</span></li>
       <li><span class="box"></span><span>Stop loss set</span></li>
       <li><span class="box"></span><span>Target: 40 pips</span></li>
     </ul>
